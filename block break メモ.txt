@@ -1,0 +1,23 @@
+blockbreak のメモ
+
+ボールの動き
+ public float speed = 5.0f;
+    private Rigidbody myRigidbody;
+
+    private float coefficient = 0.9f;
+
+    private bool isEnd = false;
+
+    private float visiblePosZ = -7f;
+
+    private GameObject GameOvertext;
+
+    private GameObject cleartext;
+
+    
+
+    // Use this for initialization
+    void Start () {
+
+        myRigidbody = this.GetComponent<Rigidbody>();
+        myRigidbody.AddForce((transform.forward + transform.right) * speed, ForceMode.VelocityChange);
