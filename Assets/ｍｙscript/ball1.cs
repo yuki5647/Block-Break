@@ -8,7 +8,7 @@ public class ball1 : MonoBehaviour {
     public float thrust;
     public Rigidbody rb;
 
-    Text scoreText;
+    private GameObject scoreText;
 
     private int score = 0;
 
@@ -18,21 +18,13 @@ public class ball1 : MonoBehaviour {
 
     // Use this for initialization
     void Start() {
-        rb = GetComponent<Rigidbody>();
-
-        this.scoreText = GameObject.Find("scoreText").GetComponent<Text>();
-        this.scoreText.text = "Score" + score.ToString();
+        rb = this.GetComponent<Rigidbody>();
         
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetMouseButtonDown(0))
-        {
-
-            rb.AddForce(transform.forward * thrust);
-        }
 
         if (this.transform.position.z < this.visiblePosZ)
         {
@@ -40,26 +32,22 @@ public class ball1 : MonoBehaviour {
             
             Destroy(gameObject);
         }
-    }
-
-    void OnTriggerEnter(Collider othear)
-    {
-        
-            if (this.gameObject.tag == "player")
-            {
-                rb.AddForce(transform.forward * thrust);
-            }
-
-        if (othear.gameObject.tag == "blocktag")
+        if (Input.GetMouseButtonDown(0))
         {
-            
-            this.score += 100;
-            this.scoreText.text = "Score" + score.ToString();
+
+            rb.AddForce(transform.forward * thrust);
         }
 
+    }
+
+    void OnTriggerEnter(Collision othear)
+    {
+        
+
         if (othear.gameObject.tag == "blocktag")
         {
-
+            this.score += 100;
+            this.scoreText.GetComponent<Text>().text = "Score" + this.score + "pt";
 
             Destroy(othear.gameObject);
         }

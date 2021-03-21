@@ -4858,7 +4858,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e786072aaea2bc1428dcf34d4f851a4f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  thrust: 5000
+  thrust: 1000
   rb: {fileID: 0}
 --- !u!1 &1172217304
 GameObject:

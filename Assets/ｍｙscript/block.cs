@@ -5,14 +5,14 @@ using UnityEngine.UI;
 
 public class block : MonoBehaviour {
 
+    private GameObject scoreText;
+
+    private int score = 0;
     
     // Use this for initialization
     void Start () {
 
-       
-        
-
-       
+        this.scoreText = GameObject.Find("ScoreText");
     }
 	
 	// Update is called once per frame
@@ -21,15 +21,15 @@ public class block : MonoBehaviour {
         }
     private void OnCollisionEnter(Collision othear)
     {
-        
-      
-        if (othear.gameObject.tag == "balltag")
-            {
 
+        if (othear.gameObject.tag == "balltag")
+        {
+            
+                this.score += 100;
+                this.scoreText.GetComponent<Text>().text = "Score" + this.score + "pt";
             
             Destroy(gameObject);
-            }
-        
+        }
         
     }
     
