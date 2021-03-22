@@ -5,7 +5,8 @@ using UnityEngine.UI;
 
 public class ball1 : MonoBehaviour {
 
-    public float thrust;
+    private int click = 0;
+    
     public Rigidbody rb;
 
     private GameObject scoreText;
@@ -26,33 +27,28 @@ public class ball1 : MonoBehaviour {
     void Update()
     {
 
+
         if (this.transform.position.z < this.visiblePosZ)
         {
 
             
             Destroy(gameObject);
         }
+        
         if (Input.GetMouseButtonDown(0))
         {
-
-            rb.AddForce(transform.forward * thrust);
-        }
-
-    }
-
-    void OnTriggerEnter(Collision othear)
-    {
-        
-
-        if (othear.gameObject.tag == "blocktag")
+            click += 1;
+            Debug.Log(1);
+       }
+       if (click == 1)
         {
-            this.score += 100;
-            this.scoreText.GetComponent<Text>().text = "Score" + this.score + "pt";
-
-            Destroy(othear.gameObject);
+            rb.AddForce(100.0f, -200.0f, 1000.0f, ForceMode.Force);
         }
+    }
+
+    
 
 
     }
-}
+
 
