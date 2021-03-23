@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class ball1 : MonoBehaviour {
 
+    
     private int click = 0;
     
     public Rigidbody rb;
@@ -38,17 +39,17 @@ public class ball1 : MonoBehaviour {
         if (Input.GetMouseButtonDown(0))
         {
             click += 1;
-            Debug.Log(1);
+            
        }
        if (click == 1)
         {
-            rb.AddForce(100.0f, -200.0f, 1000.0f, ForceMode.Force);
+            if (Input.GetMouseButtonDown(0))
+            {
+                rb.AddForce(100.0f, 0f, 1000.0f, ForceMode.Force);
+            }
         }
     }
-
     
-
-
     }
 
 
