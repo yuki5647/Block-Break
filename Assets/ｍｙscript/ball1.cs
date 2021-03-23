@@ -45,11 +45,26 @@ public class ball1 : MonoBehaviour {
         {
             if (Input.GetMouseButtonDown(0))
             {
-                rb.AddForce(100.0f, 0f, 1000.0f, ForceMode.Force);
+                rb.AddForce(10.0f, 0f, 1000.0f, ForceMode.Force);
             }
         }
     }
-    
+    private void OnCollisionEnter(Collision othear)
+    {
+        if (othear.gameObject.tag == "playertag1")
+        {
+            rb.AddForce(-50.0f, 0f, -1000.0f, ForceMode.Force);
+        }
+        if (othear.gameObject.tag == "playertag")
+        {
+            rb.AddForce(10.0f, 0f, 1000.0f, ForceMode.Force);
+        }
+        if(othear.gameObject.tag == "blocktag")
+        {
+            rb.AddForce(10.0f, 0f, -1000.0f, ForceMode.Force);
+
+        }
+    }
     }
 
 
